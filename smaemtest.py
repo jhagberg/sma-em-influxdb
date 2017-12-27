@@ -17,7 +17,7 @@ sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 sock.bind(('', MCAST_PORT))
 mreq = struct.pack("4sl", socket.inet_aton(MCAST_GRP), socket.INADDR_ANY)
 sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
-
+sock.settimeout(10)
 
 def log_to_influx(sock, db_client):
     threading.Timer(1.0, log_to_influx, args=[sock, db_client]).start()
@@ -26,7 +26,7 @@ def log_to_influx(sock, db_client):
       deg=smainfo[28:]
       smatext={}
       currtime = int(time.time())
-      while len(deg)>0:
+      while len(deg)>8:
           index=struct.unpack('>b',deg[1:2])[0]
           bytesnext=struct.unpack('>b',deg[2:3])[0]
           deg=deg[4:]
