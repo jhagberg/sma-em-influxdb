@@ -16,4 +16,11 @@ autostart=true
 stderr_logfile = /var/log/sma2eminfluxdb-stderr.log
 stdout_logfile = /var/log/sma2eminfluxdb-stdout.log
 ```
+then start it with
+
+```
+sudo supervisorctl start smaem2influxdb
+```
+
+
 
