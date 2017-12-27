@@ -8,7 +8,8 @@ The Influxdb schema is based after the discusssion here https://stackoverflow.co
 One way to run this is as a service is using supervisor 
 Add something like this to /etc/supervisor/supervisord.conf 
 
-```[program:smaem2influxdb]
+```
+[program:smaem2influxdb]
 command=/usr/bin/python /PATH/TO/smaem2influxdb.py
 autorestart=true
 autostart=true
